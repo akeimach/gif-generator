@@ -8,21 +8,28 @@ var lang = "en";
 
 var queryURL = "https://api.giphy.com/v1/gifs/search"
 
-
+var animalArray = ["Elephant", "Flying Squirrel", "Baboon", "Aardvark", "Buffalo",
+                    "Gecko", "Squid", "Mongoose", "Cow"];
 
 function addButton(newAnimal) {
     var animalButton = $("<button>");
     animalButton.addClass("animal-button");
     animalButton.html(newAnimal);
     $(".button-container").append(animalButton);
+    $("#animal-input").empty();
 }
 
 $(document).ready(function(){
     
+    for (var i = 0; i < animalArray.length; i++) {
+        addButton(animalArray[i]);
+    }
 
     $("#animal-submit").on("click", function(event) {
         event.preventDefault();
-        addButton($("#animal-input").val());
+        var animal = $("#animal-input");
+        addButton(animal.val().trim());
+        animal.val('');
     });
 
     $(document).on("click", ".animal-button", function(event) {
@@ -59,7 +66,7 @@ $(document).ready(function(){
                 resultContainer.append(addGif);
             }
 
-            $(".gif-container").prepend(resultContainer);
+            $(".gif-container").html(resultContainer);
 
         }).fail(function(err) {
             throw err;
