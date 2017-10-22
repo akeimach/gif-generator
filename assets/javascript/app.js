@@ -9,7 +9,7 @@ var lang = "en";
 var queryURL = "https://api.giphy.com/v1/gifs/search"
 
 var animalArray = ["Elephant", "Flying Squirrel", "Baboon", "Aardvark", "Buffalo",
-                    "Gecko", "Squid", "Mongoose", "Cow"];
+                    "Gecko", "Squid", "Mongoose", "Cow", "Mantis Shrimp"];
 
 function addButton(newAnimal) {
     var animalButton = $("<button>");
