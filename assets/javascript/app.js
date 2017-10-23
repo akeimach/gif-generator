@@ -34,7 +34,7 @@ $(document).ready(function(){
         }
     });
 
-    $(document).on("click", ".animal-button", function(event) {
+    $(document.body).on("click", ".animal-button", function(event) {
         event.preventDefault();
         query = event.target.textContent;
         limit = 10;
@@ -73,7 +73,7 @@ $(document).ready(function(){
 
     });
 
-    $(document).on("click", ".animal-gif", function(event) {
+    $(document.body).on("click", ".animal-gif", function(event) {
 
         var state = $(this).attr("data-state");
 
