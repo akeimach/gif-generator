@@ -1,0 +1,66 @@
+.flex-container {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: column wrap;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.flex-row {
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+}
+
+body {
+    background: #262626;
+}
+
+h1 {
+    font-family: 'Monoton', cursive;
+    font-size: 55px;
+    line-height: 150%;
+    text-align: center;
+    color: #E0E0CE;
+}
+
+.textbox-style, .button-style {
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    line-height: 130%;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 3px;
+    border-width: 1px;
+    border: 1px solid #727272;
+    background: #675C72;
+    color: #E0E0CE;
+}
+
+
+.textbox-style, .button-style:hover {
+    background: #47404F;
+}
+
+
+.textbox-style:focus, .button-style:focus {
+    outline: 0;
+}
+
+
+img {
+    border-radius: 5px;
+    margin: 8px;
+    border: 3px solid #727272;
+}
+
+
+/*
+dark grey #262626
+lighter grey #727272
+purple #675C72
+purple shadow #47404F
+cream #E0E0CE
+*/

@@ -2,22 +2,23 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monoton|Raleway:500">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="icon" type="image/gif" href="assets/images/jelly.gif"/>
     <title>Gif Generator</title>
 </head>
 <body>
-    <h1>Find themed gifs!</h1>
 
-    <div class="button-container">
-    </div>
+    <div class="flex-container">
+        <h1>Find themed gifs!</h1>
+        <div class="flex-container flex-row" id="button-container"></div>
 
-    <form class="animal-form">
-        <input type="text" id="animal-input" placeholder="New animal" value="">
-        <input type="submit" id="animal-submit" value="Submit">
-    </form>
+        <form class="animal-form">
+            <input class="textbox-style" type="text" id="animal-input" placeholder="New animal" value="">
+            <input class="button-style" type="submit" id="animal-submit" value="Submit">
+        </form>
 
-    <div class="gif-container">
+        <div class="flex-container flex-row" id="gif-container"></div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

@@ -14,9 +14,9 @@ var animalArray = ["Elephant", "Flying Squirrel", "Baboon", "Aardvark", "Buffalo
 function addButton(newAnimal) {
     var animalButton = $("<button>");
     animalButton.addClass("animal-button");
+    animalButton.addClass("button-style");
     animalButton.html(newAnimal);
-    $(".button-container").append(animalButton);
-    $("#animal-input").empty();
+    $("#button-container").append(animalButton);
 }
 
 $(document).ready(function(){
@@ -28,8 +28,10 @@ $(document).ready(function(){
     $("#animal-submit").on("click", function(event) {
         event.preventDefault();
         var animal = $("#animal-input");
-        addButton(animal.val().trim());
-        animal.val('');
+        if (animal.val().trim() !== "") {
+            addButton(animal.val().trim());
+            animal.val('');
+        }
     });
 
     $(document).on("click", ".animal-button", function(event) {
@@ -51,8 +53,7 @@ $(document).ready(function(){
         }).done(function(result) {
 
             var resultArray = result.data;
-            var resultContainer = $("<div>");
-            resultContainer.addClass("result");
+            $("#gif-container").empty();
 
             for (var i = 0; i < resultArray.length; i++) {
                 
@@ -63,10 +64,8 @@ $(document).ready(function(){
                 addGif.attr("data-animate", resultArray[i].images.fixed_width.url);
                 addGif.attr("data-state", "still");
                 
-                resultContainer.append(addGif);
+                $("#gif-container").append(addGif);
             }
-
-            $(".gif-container").html(resultContainer);
 
         }).fail(function(err) {
             throw err;
