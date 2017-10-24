@@ -1,13 +1,8 @@
 
 var apiKey = "9zBzMAEzPUHzeutAzBsUPJHSJrsAQelh";
-var query; //required, search query term or phrase
-var limit; // max records to return
-var offset = 0; //offset val
+var limit = 10; // max records to return
 var rating = "G";
-var lang = "en";
-
 var queryURL = "https://api.giphy.com/v1/gifs/search"
-
 var animalArray = ["Elephant", "Flying Squirrel", "Baboon", "Aardvark", "Buffalo",
                     "Gecko", "Squid", "Mongoose", "Cow", "Mantis Shrimp"];
 
@@ -27,25 +22,24 @@ $(document).ready(function(){
 
     $("#animal-submit").on("click", function(event) {
         event.preventDefault();
-        var animal = $("#animal-input");
-        if (animal.val().trim() !== "") {
-            addButton(animal.val().trim());
-            animal.val('');
+        var animal = $("#animal-input").val().trim();
+        if ((animal !== "") && (animalArray.indexOf(animal) === -1)) {
+            animalArray.push(animal);
+            addButton(animal);
         }
+        $("#animal-input").val('');
     });
 
     $(document.body).on("click", ".animal-button", function(event) {
+
         event.preventDefault();
-        query = event.target.textContent;
-        limit = 10;
+
         queryURL += '?' + $.param({
-              'api_key': apiKey,
-              'q': query,
-              'limit': limit,
-              'offset': offset,
-              'rating': rating,
-              'lang': lang
-            });
+            'api_key': apiKey,
+            'q': event.target.textContent,
+            'limit': limit,
+            'rating': rating
+        });
 
         $.ajax({
             url: queryURL,
@@ -57,14 +51,25 @@ $(document).ready(function(){
 
             for (var i = 0; i < resultArray.length; i++) {
                 
-                var addGif = $("<img>");
-                addGif.addClass("animal-gif");
-                addGif.attr("src", resultArray[i].images.fixed_width_still.url);
-                addGif.attr("data-still", resultArray[i].images.fixed_width_still.url);
-                addGif.attr("data-animate", resultArray[i].images.fixed_width.url);
-                addGif.attr("data-state", "still");
+                var gifCard = $("<div>");
+                gifCard.addClass("gif-card");
+
+                var gifCardImg = $("<img>");
+                gifCardImg.addClass("gif-card-img");
+                gifCardImg.attr("src", resultArray[i].images.fixed_width_still.url);
+                gifCardImg.attr("data-still", resultArray[i].images.fixed_width_still.url);
+                gifCardImg.attr("data-animate", resultArray[i].images.fixed_width.url);
+                gifCardImg.attr("data-state", "still");
                 
-                $("#gif-container").append(addGif);
+
+                var gifCardFooter = $("<p>");
+                gifCardFooter.addClass("gif-card-footer");
+                gifCardFooter.text("Rating: " + resultArray[i].rating);
+
+                gifCard.append(gifCardImg);
+                gifCard.append(gifCardFooter);
+                
+                $("#gif-container").append(gifCard);
             }
 
         }).fail(function(err) {
@@ -73,11 +78,9 @@ $(document).ready(function(){
 
     });
 
-    $(document.body).on("click", ".animal-gif", function(event) {
+    $(document.body).on("click", ".gif-card-img", function(event) {
 
-        var state = $(this).attr("data-state");
-
-        if (state === "still") {
+        if ($(this).attr("data-state") === "still") {
           $(this).attr("src", $(this).attr("data-animate"));
           $(this).attr("data-state", "animate");
         }

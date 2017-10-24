@@ -9,14 +9,17 @@
     margin: 15px auto;
 }
 
+
 .flex-row {
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
 }
 
+
 body {
     background: #262626;
 }
+
 
 h1 {
     font-family: 'Monoton', cursive;
@@ -26,7 +29,8 @@ h1 {
     color: #E0E0CE;
 }
 
-.textbox-style, .button-style {
+
+.button-style {
     font-family: 'Raleway', sans-serif;
     font-size: 16px;
     line-height: 130%;
@@ -40,27 +44,41 @@ h1 {
 }
 
 
-.textbox-style, .button-style:hover {
+.button-style:hover {
     background: #47404F;
 }
 
 
-.textbox-style:focus, .button-style:focus {
+.button-style:focus {
     outline: 0;
 }
 
 
-img {
+.gif-card {
+    position: relative;
+    width: 240px;
+    height: 240px;
+    margin: 15px;
+    background: #727272;
     border-radius: 5px;
-    margin: 8px;
-    border: 3px solid #727272;
 }
 
 
-/*
-dark grey #262626
-lighter grey #727272
-purple #675C72
-purple shadow #47404F
-cream #E0E0CE
-*/
+.gif-card-footer {
+    position: absolute;
+    bottom: 0;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    line-height: 130%;
+    margin: 10px;
+    color: #E0E0CE;
+}
+
+
+.gif-card img {
+    width: 220px;
+    max-height: 200px;
+    margin: 10px auto;
+    border-radius: 5px;
+    display: block;
+}
