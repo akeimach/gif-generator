@@ -14,7 +14,7 @@ function addButton(newAnimal) {
     $("#button-container").append(animalButton);
 }
 
-$(document).ready(function(){
+$(document.body).ready(function(){
     
     for (var i = 0; i < animalArray.length; i++) {
         addButton(animalArray[i]);
